@@ -11,7 +11,17 @@ function getImagesByQuery(query) {
       orientation: horizontal,
       safesearch: true,
     },
-  }).then(({ data }) => {
-    return data;
-  });
+  })
+    .then(({ data }) => {
+      if (data.length > 0) {
+        return data;
+      } else {
+        alert(
+          'Sorry, there are no images matching your search query. Please try again!'
+        );
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
 }
