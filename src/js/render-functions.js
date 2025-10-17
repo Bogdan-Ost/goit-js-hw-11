@@ -4,9 +4,18 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 function createGallery(images) {
-  return images.map(
-    ({ webformatUR, largeImageURL, tags, likes, views, comments, downloads }) =>
-      `<li class="galerry-list">
+  return images
+    .map(
+      ({
+        webformatUR,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) =>
+        `<li class="galerry-list">
     <a class=gallery-img href=${webformatUR} src=${largeImageURL} alt=${tags}></a>
     <div class="gallery-subcontainer">
       <div class="gallery-text">
@@ -27,5 +36,6 @@ function createGallery(images) {
       </div>
     </div>
     </li>`
-  );
+    )
+    .join();
 }
