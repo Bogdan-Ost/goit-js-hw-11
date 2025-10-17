@@ -1,5 +1,10 @@
 import axios from 'axios';
 
+// Описаний у документації
+import iziToast from 'izitoast';
+// Додатковий імпорт стилів
+import 'izitoast/dist/css/iziToast.min.css';
+
 const KEY = '52797482-aafa905b189c4ff0c9ee358ec';
 
 function getImagesByQuery(query) {
@@ -16,9 +21,12 @@ function getImagesByQuery(query) {
       if (data.length > 0) {
         return data;
       } else {
-        alert(
-          'Sorry, there are no images matching your search query. Please try again!'
-        );
+        iziToast.error({
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          position: 'topRight',
+          color: red,
+        });
       }
     })
     .catch(error => {
