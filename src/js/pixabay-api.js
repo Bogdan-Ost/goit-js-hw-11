@@ -12,9 +12,9 @@ function getImagesByQuery(query) {
     params: {
       key: KEY,
       q: query,
-      // image_type: photo,
-      // orientation: horizontal,
-      // safesearch: true,
+      image_type: 'photo',
+      orientation: 'horizontal',
+      safesearch: true,
     },
   })
     .then(({ data }) => {

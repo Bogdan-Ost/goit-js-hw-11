@@ -2,12 +2,20 @@
 import SimpleLightbox from 'simplelightbox';
 // Додатковий імпорт стилів
 import 'simplelightbox/dist/simple-lightbox.min.css';
+const gallery = document.querySelector('.gallery');
+const loader = document.querySelector('span');
+console.log(loader);
+
+const simleGallery = new SimpleLightbox('.gallery-link', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 function createGallery(images) {
-  return images
+  gallery.innerHTML = images
     .map(
       ({
-        webformatUR,
+        webformatURL,
         largeImageURL,
         tags,
         likes,
@@ -16,7 +24,8 @@ function createGallery(images) {
         downloads,
       }) =>
         `<li class="galerry-list">
-    <img class=gallery-img href=${webformatUR} src=${largeImageURL} alt=${tags}>
+        
+    <a class="gallery-link" href=${largeImageURL}><img class="gallery-img" src=${webformatURL} alt=${tags}></a>
     <div class="gallery-subcontainer">
       <div class="gallery-text">
       <h3 class="gallery-subtitle">Likes</h3>
@@ -38,12 +47,8 @@ function createGallery(images) {
     </li>`
     )
     .join('');
+  simleGallery.refresh();
 }
-
-new SimpleLightbox('.gallery-img', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});
 
 function clearGallery() {
   gallery.innerHTML('');
