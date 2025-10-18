@@ -22,7 +22,7 @@ function searchWord(event) {
   event.preventDefault();
   console.log(input.value);
   if (!input.value.trim()) {
-    return alert('asd');
+    return (input.value = '');
   }
 
   getImagesByQuery(input.value).then(data => {
