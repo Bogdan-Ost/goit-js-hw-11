@@ -16,7 +16,7 @@ function createGallery(images) {
         downloads,
       }) =>
         `<li class="galerry-list">
-    <a class=gallery-img href=${webformatUR} src=${largeImageURL} alt=${tags}></a>
+    <img class=gallery-img href=${webformatUR} src=${largeImageURL} alt=${tags}>
     <div class="gallery-subcontainer">
       <div class="gallery-text">
       <h3 class="gallery-subtitle">Likes</h3>
@@ -37,5 +37,23 @@ function createGallery(images) {
     </div>
     </li>`
     )
-    .join();
+    .join('');
 }
+
+new SimpleLightbox('.gallery-img', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
+function clearGallery() {
+  gallery.innerHTML('');
+}
+function showLoader() {
+  loader.classList.remove('hidden');
+}
+
+function hideLoader() {
+  loader.classList.add('hidden');
+}
+
+export { clearGallery, createGallery, showLoader, hideLoader };

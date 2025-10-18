@@ -8,24 +8,24 @@ import 'izitoast/dist/css/iziToast.min.css';
 const KEY = '52797482-aafa905b189c4ff0c9ee358ec';
 
 function getImagesByQuery(query) {
-  axios('https://pixabay.com/api/', {
+  return axios('https://pixabay.com/api/', {
     params: {
       key: KEY,
       q: query,
-      image_type: photo,
-      orientation: horizontal,
-      safesearch: true,
+      // image_type: photo,
+      // orientation: horizontal,
+      // safesearch: true,
     },
   })
     .then(({ data }) => {
-      if (data.length > 0) {
+      if (data.hits.length > 0) {
         return data;
       } else {
         iziToast.error({
           message:
             'Sorry, there are no images matching your search query. Please try again!',
           position: 'topRight',
-          color: red,
+          // color: red,
         });
       }
     })
@@ -33,3 +33,5 @@ function getImagesByQuery(query) {
       console.log(error);
     });
 }
+
+export { getImagesByQuery, KEY };
