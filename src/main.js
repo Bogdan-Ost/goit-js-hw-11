@@ -12,6 +12,7 @@ form.addEventListener('submit', searchWord);
 
 function searchWord(event) {
   event.preventDefault();
+  clearGallery();
   showLoader();
   if (!input.value.trim()) {
     return (input.value = '');

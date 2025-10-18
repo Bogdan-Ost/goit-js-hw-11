@@ -11,18 +11,20 @@ const simleGallery = new SimpleLightbox('.gallery-link', {
 });
 
 function createGallery(images) {
-  gallery.innerHTML = images
-    .map(
-      ({
-        webformatURL,
-        largeImageURL,
-        tags,
-        likes,
-        views,
-        comments,
-        downloads,
-      }) =>
-        `<li class="galerry-list">
+  gallery.insertAdjacentHTML(
+    'beforeEnd',
+    images
+      .map(
+        ({
+          webformatURL,
+          largeImageURL,
+          tags,
+          likes,
+          views,
+          comments,
+          downloads,
+        }) =>
+          `<li class="galerry-list">
         
     <a class="gallery-link" href=${largeImageURL}><img class="gallery-img" src=${webformatURL} alt=${tags}></a>
     <div class="gallery-subcontainer">
@@ -44,13 +46,14 @@ function createGallery(images) {
       </div>
     </div>
     </li>`
-    )
-    .join('');
+      )
+      .join('')
+  );
   simleGallery.refresh();
 }
 
 function clearGallery() {
-  gallery.innerHTML('');
+  gallery.textContent = '';
 }
 function showLoader() {
   loader.classList.remove('hidden');
