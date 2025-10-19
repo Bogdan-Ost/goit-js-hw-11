@@ -29,9 +29,7 @@ function getImagesByQuery(query) {
         });
       }
     })
-    .catch(error => {
-      console.log(error);
-    });
+    .catch(error => {});
 }
 
 export { getImagesByQuery, KEY };

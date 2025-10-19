@@ -15,11 +15,18 @@ function searchWord(event) {
   clearGallery();
   showLoader();
   if (!input.value.trim()) {
+    hideLoader();
     return (input.value = '');
   }
 
   getImagesByQuery(input.value)
-    .then(data => createGallery(data.hits))
+    .then(data => {
+      if (data) {
+        createGallery(data.hits);
+      }
+    })
     .catch(error => console.log(error.message))
-    .finally(() => hideLoader(), event.target.reset());
+    .finally(() => hideLoader());
+
+  event.target.reset();
 }
