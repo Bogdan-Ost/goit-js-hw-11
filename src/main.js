@@ -21,6 +21,12 @@ function searchWord(event) {
   showLoader();
   if (!input.value.trim()) {
     hideLoader();
+    iziToast.error({
+      message:
+        'Sorry, there are no images matching your search query. Please try again!',
+      position: 'topRight',
+      color: 'red',
+    });
     return (input.value = '');
   }
 
@@ -28,8 +34,9 @@ function searchWord(event) {
     .then(data => {
       if (data && data.hits) {
         createGallery(data.hits);
+      } else {
+        throw new Error(response.status);
       }
-      throw new Error(response.status);
     })
     .catch(error =>
       iziToast.error({
