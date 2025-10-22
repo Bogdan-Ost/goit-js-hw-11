@@ -11,13 +11,9 @@ function getImagesByQuery(query) {
       orientation: 'horizontal',
       safesearch: true,
     },
-  })
-    .then(({ data }) => {
-      if (data.hits.length > 0) {
-        return data;
-      }
-    })
-    .catch(error => {});
+  }).then(({ data }) => {
+    return data;
+  });
 }
 
 export { getImagesByQuery, KEY };
